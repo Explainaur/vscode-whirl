@@ -1,0 +1,132 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "WHIRL IR",
+	"patterns": [{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#statements"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#indentifiers"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+					"name": "keyword.other",
+					"match": "\\b(if|while|for|return)\\b"
+				},
+				{
+					"name": "keyword.control.structure.whirl",
+					"match": "\\b(FUNC_ENTRY|BODY|BLOCK|END_BLOCK|REGION|DO_LOOP|DO_WHILE|WHILE_DO|IF|THEN|ElSE|COMP|END_IF)\\b"
+				},
+				{
+					"name": "keyword.other.whirl",
+					"match": "\\b(PRAGMA|XPRAGMA)\\b"
+				},
+				{
+					"name": "entity.name.tag.whirl",
+					"match": "\\b(IDNAME)\\b"
+				},
+				{
+					"name": "entity.name.type.primitive.whirl",
+					"match": "(I1|I2|I4|I8|U1|U2|U4|U8|A4|A8|F4|F8)"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.whirl",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [{
+				"name": "constant.character.escape.whirl",
+				"match": "\\\\."
+			}]
+		},
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.whirl",
+				"begin": "#",
+				"end": "\\n"
+			}]
+		},
+		"statements": {
+			"patterns": [{
+					"name": "keyword.operator.new.memop.whirl",
+					"match": "(LDID|STID|ISTORE|ILOAD|ILOADX|MLOAD|ISTOREX|MSTORE)"
+				},
+				{
+					"name": "entity.name.tag.expr.unary.whirl",
+					"match": "(NEG|ABS|SQRT|RSQRT|RECIP|FIRSTPART|SECONDPART|PAREN|RND|TRUNC|CEIL|FLOOR|BNOT|LNOT|LOWPART|HIGHPART|MINPART|MINPART|ILDA|STRCTFLD|EXTRACT_BITS|PARM|ASM_INPUT|ALLOCA)"
+				},
+				{
+					"name": "entity.name.tag.expr.binary.whirl",
+					"match": "(PAIR|ADD|SUB|MPY|HIGHMPY|XMPY|DIV|MOD|REM|DIVREM|MAX|MIN|MINMAX|EQ|NE|GE|GT|LE|LT|BAND|BIOR|BNOT|BXOR|LAND|LIOR|CAND|CIOR|SHL|ASHR|LSHR|COMPOSE_BITS|RROTATE|COMMA|RCOMMA)"
+				},
+				{
+					"name": "entity.name.tag.expr.ternary.whirl",
+					"match": "(SELECT|CSELECT|MADD|MSUB|NMADD|NMSUB)"
+				},
+				{
+					"name": "entity.name.tag.expr.Nary.whirl",
+					"match": "(ARRAY|INTRINSIC_OP|IO_ITEM)"
+				},
+				{
+					"name": "entity.name.tag.expr.other.whirl",
+					"match": "(LDA|LDMA|ldA_LABEL|INTCONST|CONST)"
+				},
+				{
+					"name": "entity.name.tag.stmt.call.whirl",
+					"match": "(CALL|ICALL|VFCALL|PICCALL|INTRINSIC_CALL|ASM_STMT)"
+				},
+				{
+					"name": "entity.name.tag.stmt.control.whirl",
+					"match": "(GOTO|GOTO_OUTER_BLOCK|CMPGOTO|CASEGOTO|XGOTO|AGOTO|REGION_EXIT|ALTENTRY|TRUEBR|FALSEBR|RETURN|RETURN_VAL|LABEL|LOOP_INFO)"
+				},
+				{
+					"name": "entity.name.tag.stmt.other.whirl",
+					"match": "(EVAL|USE|PREFETCH|PREFETCHX|COMMENT|TRAP|ASSERT|AFFIRM|FORWARD_BARRIER|BACKWARD_BARRIER|DEALLOCA)"
+				},
+				{
+					"name": "keyword.operator.new.stmt.bitfield.whirl",
+					"match": "(LDBITS|STBITS|ILDBITS|ISTBITS)"
+				}, {
+					"name": "keyword.operator.new.stmt.typecvt.whirl",
+					"match": "(CVT|CVTL|TAS)"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [{
+				"name": "constant.numeric.hexadecimal.whirl",
+				"match": "\\b0[x]_*[0-9a-fA-F][0-9a-fA-F_]*\\b"
+			},
+			{
+				"name": "constant.numeric.float.whirl",
+				"match": "\\b(0|[1-9][0-9_]*)\\.[0-9_]*"
+			},
+			{
+				"name": "constant.numeric.integer.whirl",
+				"match": "\\b0|[1-9][0-9_]*\\b"
+			}]
+		},
+		"indentifiers": {
+			"patterns": [{
+				"name": "variable.other.whirl",
+				"match": "[._a-zA-Z][_a-zA-Z0-9]*"
+			}]
+		}
+
+	},
+	"scopeName": "source.W"
+}

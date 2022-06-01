@@ -1,0 +1,25 @@
+{
+    "name": "whirl",
+    "displayName": "Whirl",
+    "description": "Support for WHIRL IR",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.67.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "whirl",
+            "aliases": ["whirl", "whirl"],
+            "extensions": [".W"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "whirl",
+            "scopeName": "source.W",
+            "path": "./syntaxes/whirl.tmLanguage.json"
+        }]
+    }
+}
